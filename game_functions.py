@@ -71,35 +71,45 @@ def update_bullets(bullets):
         if bullet.rect.bottom <= 0:
                 bullets.remove(bullet)
 
+def get_number_aliens_x(ai_settings, alien_width):
+    """计算一行可容纳多少外星人"""
+    available_space_x = ai_settings.screen_width -2 * alien_width
+    number_aliens_x = int(available_space_x / alien_width)
+    return number_aliens_x
 
-def creat_fleet(ai_settings, screen, aliens):
-    """创建外星人群"""
-    # 创建一个外星人
+
+def creat_aliens(ai_settings, screen, aliens, alien_number):
+    """创建外星人""" 
     alien = Alien(ai_settings, screen)
     
     # 外星人间距等于外星人宽度
     alien_width = alien.rect.width
-
-    # 计算一行可容纳多少个外星人
-    available_space_x = ai_settings.screen_width -2 * alien_width
-    number_aliens_x = int(available_space_x / alien_width)
-
-    # 创建第一行外星人
+    
+    # 将新的外星人加入当前行
+    alien_x = alien_width + 2 * alien_width * alien_number
+    alien.rect.x = alien_x
+    aliens.add(alien)
+    
+    
+def creat_fleet(ai_settings, screen, aliens):
+    """创建外星人群"""
+    # 创建一个外星人，并计算该行最大容下多少外星人
+    alien = Alien(ai_settings, screen)
+    number_aliens_x = get_number_aliens_x(ai_settings, alien_width)
+    
+    
     # number_aliens_x为奇数时
     if (number_aliens_x % 2) != 0:
         for alien_number in range(int(number_aliens_x / 2 + 1)):
-         # 创建一个外星人并将其加入当前行
-         alien = Alien(ai_settings, screen)
-         alien_x = alien_width + 2 * alien_width * alien_number
-         alien.rect.x = alien_x
-         aliens.add(alien)
+            creat_aliens(ai_settings, screen, aliens, alien_number)
+            
+    # number_aliens_x为偶数时
     elif (number_aliens_x % 2) == 0:
          for alien_number in range(int(number_aliens_x / 2)):
-         # 创建一个外星人并将其加入当前行
-             alien = Alien(ai_settings, screen)
-             alien_x = alien_width + 2 * alien_width * alien_number
-             alien.rect.x = alien_x
-             aliens.add(alien)
+             creat_aliens(ai_settings, screen, aliens, alien_number)
+            
+    
+   
 
     
     
