@@ -8,6 +8,7 @@ class Alien(Sprite):
     def __init__(self, ai_settings, screen):
         """初始化外星人并设置其起始坐标"""
         super(Alien, self).__init__()
+
         self.screen = screen
         self.ai_settings = ai_settings
 
@@ -26,4 +27,3 @@ class Alien(Sprite):
     def blitme(self):
         """在指定位置绘制外星人"""
         self.screen.blit(self.image, self.rect)
-
