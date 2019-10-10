@@ -97,7 +97,6 @@ def creat_fleet(ai_settings, screen, aliens):
     alien = Alien(ai_settings, screen)
     number_aliens_x = get_number_aliens_x(ai_settings, alien_width)
     
-    
     # number_aliens_x为奇数时
     if (number_aliens_x % 2) != 0:
         for alien_number in range(int(number_aliens_x / 2 + 1)):
