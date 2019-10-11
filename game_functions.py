@@ -77,25 +77,33 @@ def get_number_aliens_x(ai_settings, alien_width):
     number_aliens_x = int(available_space_x / alien_width)
     return number_aliens_x
 
+def get_number_aliens_y(ai_settings, alien_height):
+    "计算一列可容纳多少外星人"
+    available_space_row = ai_settings.screen_height-3 * alien_height
+    number_alien_y = int(available_space_row/alien_height)
+    return number_alien_y
 
-def creat_aliens(ai_settings, screen, aliens, alien_number):
+
+def creat_aliens(ai_settings, screen, aliens, alien_number, row_number):
     """创建外星人""" 
     alien = Alien(ai_settings, screen)
     
     # 外星人间距等于外星人宽度
     alien_width = alien.rect.width
     
-    # 将新的外星人加入当前行
+    # 将新的外星人加入当前行或列
     alien_x = alien_width + 2 * alien_width * alien_number
     alien.rect.x = alien_x
+    alien.rect.y = alien_height + 2 * alien_height * row_number
     aliens.add(alien)
     
     
 def creat_fleet(ai_settings, screen, aliens):
     """创建外星人群"""
-    # 创建一个外星人，并计算该行最大容下多少外星人
+    # 创建一个外星人，并计算该行或列最大容下多少外星人
     alien = Alien(ai_settings, screen)
     number_aliens_x = get_number_aliens_x(ai_settings, alien_width)
+    number_aliens_y = get_number_aliens_y(ai_settings, alien_height)
     
     # number_aliens_x为奇数时
     if (number_aliens_x % 2) != 0:
