@@ -78,13 +78,13 @@ def get_number_aliens_x(ai_settings, alien_width):
     return number_aliens_x
 
 def get_number_aliens_y(ai_settings, alien_height):
-    "计算一列可容纳多少外星人"
+    """计算一列可容纳多少外星人"""
     available_space_row = ai_settings.screen_height-3 * alien_height
     number_alien_y = int(available_space_row/alien_height)
     return number_alien_y
 
 
-def creat_aliens(ai_settings, screen, aliens, alien_number, row_number):
+def creat_aliens(ai_settings, screen, aliens, alien_x_number, alien_y_number):
     """创建外星人""" 
     alien = Alien(ai_settings, screen)
     
@@ -92,9 +92,8 @@ def creat_aliens(ai_settings, screen, aliens, alien_number, row_number):
     alien_width = alien.rect.width
     
     # 将新的外星人加入当前行或列
-    alien_x = alien_width + 2 * alien_width * alien_number
-    alien.rect.x = alien_x
-    alien.rect.y = alien_height + 2 * alien_height * row_number
+    alien.rect.x = alien_width + 2 * alien_width * alien_x_number
+    alien.rect.y = alien_height + 2 * alien_height * alien_y_number
     aliens.add(alien)
     
     
@@ -107,13 +106,14 @@ def creat_fleet(ai_settings, screen, aliens):
     
     # number_aliens_x为奇数时
     if (number_aliens_x % 2) != 0:
-        for alien_number in range(int(number_aliens_x / 2 + 1)):
-            creat_aliens(ai_settings, screen, aliens, alien_number)
+        for alien_x_number in range(number_alien_y / 2 + 1):
+            for alien_x_number in range(int(number_aliens_x / 2 + 1)):
+                creat_aliens(ai_settings, screen, aliens, alien_x_number, alien_y_number)
             
     # number_aliens_x为偶数时
     elif (number_aliens_x % 2) == 0:
-         for alien_number in range(int(number_aliens_x / 2)):
-             creat_aliens(ai_settings, screen, aliens, alien_number)
+         for alien_x_number in range(int(number_aliens_x / 2)):
+             creat_aliens(ai_settings, screen, aliens, alien_x_number)
             
     
    
