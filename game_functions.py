@@ -85,7 +85,7 @@ def fire_bullet(ai_settings, screen, ship, bullets):
             bullets.add(new_bullet)
     
         
-def update_screen(ai_settings, screen, ship, aliens, bullets):
+def update_screen(ai_settings, screen, ship, aliens, bullets， play_button):
     """update the images on the screen and flip to the new screen"""
     # 每次循环都重绘屏幕
     screen.fill(ai_settings.bg_color)
@@ -95,6 +95,10 @@ def update_screen(ai_settings, screen, ship, aliens, bullets):
         bullet.draw_bullet()
     ship.blitme()
     aliens.draw(screen)
+    
+    # 非活跃状态绘制play按钮
+    if not stats.game_active:
+        play_button.draw_button()
             
     # 让最近绘制的屏幕可见
     pygame.display.flip()
