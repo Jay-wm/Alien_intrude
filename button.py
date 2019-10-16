@@ -18,17 +18,17 @@ class Button():
         self.rect.center = self.screen_rect.center
         
         # 按下按钮开始游戏
-        self.prep_mgs(mgs)
+        self.prep_msg(msg)
         
         
-    def prep_mgs(self, msg):
+    def prep_msg(self, msg):
         """将msg渲染为图像，并使其在按钮上居中"""
         self.msg_image = self.font.render(msg, True, self.text_color, self.button_color)
         self.msg_image_rect = self.msg_image.get_rect()
         self.msg_image_rect_center = self.rect.center
         
         
-    def draw_mgs(self, msg):
+    def draw_msg(self):
         """将msg显示到屏幕上"""
-        self.screen.fill(self.botton_color, self.rect)
+        self.screen.fill(self.button_color, self.rect)
         self.screen.blit(self.msg_image, self.msg_image_rect)
