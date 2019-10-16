@@ -3,7 +3,6 @@ import pygame
 from bullet import Bullet
 from alien import Alien
 from time import sleep
-from game_stats import Gamestats
 
 
 def check_keydown_events(event, ai_settings, screen, ship, bullets):
