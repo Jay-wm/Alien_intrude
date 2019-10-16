@@ -7,6 +7,7 @@ from pygame.sprite import Group
 from alien import Alien
 from game_stats import GameStats
 from button import Button
+
 def run_game():
     # 初始化游戏并创建一个屏幕对象
     pygame.init()
