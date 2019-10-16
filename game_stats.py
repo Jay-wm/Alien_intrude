@@ -6,7 +6,7 @@ class GameStats():
         self.reset_stats()
         
         # 游戏刚启动时处于活跃状态
-        self.game_active = True
+        self.game_active = False
         
         
     def reset_stats(self):
