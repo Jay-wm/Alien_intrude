@@ -3,6 +3,7 @@ import pygame
 from bullet import Bullet
 from alien import Alien
 from time import sleep
+from game_stats import Gamestats
 
 
 def check_keydown_events(event, ai_settings, screen, ship, bullets):
@@ -85,7 +86,7 @@ def fire_bullet(ai_settings, screen, ship, bullets):
             bullets.add(new_bullet)
     
         
-def update_screen(ai_settings, screen, ship, aliens, bullets, play_button):
+def update_screen(ai_settings, screen, stats, ship, aliens, bullets, play_button):
     """update the images on the screen and flip to the new screen"""
     # 每次循环都重绘屏幕
     screen.fill(ai_settings.bg_color)
