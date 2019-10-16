@@ -32,7 +32,7 @@ def run_game():
     gf.create_aliens(ai_settings, screen, ship, aliens)
     
     # 创建按钮
-    play_button = Button(ai_zettings, screen, "Play")
+    play_button = Button(ai_settings, screen, "Play")
 
 
     # 开始游戏的主循环
