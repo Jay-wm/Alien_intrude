@@ -19,3 +19,10 @@ class Button():
         
         # 按下按钮开始游戏
         self.prep_mgs(mgs)
+        
+        
+    def prep_mgs(self, msg):
+        """将msg渲染为图像，并使其在按钮上居中"""
+        self.msg_image = self.font.render(msg, True, self.text_color, self.button_color)
+        self.msg_image_rect = self.msg_image.get_rect()
+        self.msg_image_rect_center = self.rect.center
