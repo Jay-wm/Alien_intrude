@@ -6,7 +6,7 @@ from ship import Ship
 from pygame.sprite import Group
 from alien import Alien
 from game_stats import GameStats
-
+from button import Button
 def run_game():
     # 初始化游戏并创建一个屏幕对象
     pygame.init()
@@ -29,6 +29,9 @@ def run_game():
 
     # 创建外星人群
     gf.create_aliens(ai_settings, screen, ship, aliens)
+    
+    # 创建按钮
+    play_button = Button(ai_zettings, screen, "Play")
 
 
     # 开始游戏的主循环
@@ -38,8 +41,7 @@ def run_game():
             ship.update()
             gf.update_bullets(ai_settings, screen, ship, aliens, bullets)
             gf.update_aliens(ai_settings, stats, screen, ship, aliens, bullets)
-    
-        gf.update_screen(ai_settings, screen, ship, aliens, bullets)
+        gf.update_screen(ai_settings, screen, ship, aliens, bullets, play_button)
 
 run_game()
 
