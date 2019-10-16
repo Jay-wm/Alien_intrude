@@ -28,7 +28,7 @@ class Button():
         self.msg_image_rect_center = self.rect.center
         
         
-    def draw_msg(self):
+    def draw_button(self):
         """将msg显示到屏幕上"""
         self.screen.fill(self.button_color, self.rect)
         self.screen.blit(self.msg_image, self.msg_image_rect)
