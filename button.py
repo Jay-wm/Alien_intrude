@@ -26,3 +26,9 @@ class Button():
         self.msg_image = self.font.render(msg, True, self.text_color, self.button_color)
         self.msg_image_rect = self.msg_image.get_rect()
         self.msg_image_rect_center = self.rect.center
+        
+        
+    def draw_mgs(self, msg):
+        """将msg显示到屏幕上"""
+        self.screen.fill(self.botton_color, self.rect)
+        self.screen.blit(self.msg_image, self.msg_image_rect)
